@@ -63,8 +63,7 @@ def extract_table_content(driver, url):
             print(table_header)
             # Extract table data
             rows = table_body.find_all('tr')
-            print("================rows")
-            print(rows)
+
             table_data = []
             for row in rows:
                 cells = row.find_all('td')
