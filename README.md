@@ -11,7 +11,7 @@ This repository contains scripts and instructions for a web scraping workflow to
 ### Step 1: Save Page Content with Image URLs
 
 - **Script:** `step_1_sc_save_page_wise.py`
-- **Input:** None
+- **Input:** [None](https://shop.adidas.jp/men/)
 - **Output File:** `dis_man_1.csv`
 - **Output Columns:** `href` (page URL), `src` (image URL)
 
