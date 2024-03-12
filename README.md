@@ -62,6 +62,7 @@ This repository contains scripts and instructions for a web scraping workflow to
 ## Dependencies
 
 - Python 3.x
+- Selenium
 - Pandas
 - (Add any additional dependencies if required)
 
