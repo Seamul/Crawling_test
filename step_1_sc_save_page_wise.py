@@ -49,51 +49,6 @@ def save_to_csv(data, filename='product_details.csv'):
     df.to_csv(filename, index=False)
     print(f"Product details saved to {filename}")
 
-
-def main():
-    # Set up WebDriver
-    driver = setup_driver()
-
-    base_url = "https://shop.adidas.jp/item/?gender=mens&category=wear&group=tops&page={}"
-
-    # Initialize lists to store data
-    href_list = []
-    src_list = []
-
-    # Loop through each page
-    for page_num in range(1, 9):  # Adjust range based on the number of pages
-        url = base_url.format(page_num)
-        driver.get(url)
-
-        WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.TAG_NAME, 'body')))
-
-        # Get the HTML content of the entire page
-        page_html = driver.page_source
-        # Pass the HTML content to BeautifulSoup for parsing
-        soup = BeautifulSoup(page_html, 'html.parser')
-
-        # Find all <a> tags with href containing '/products/'
-        product_links = soup.find_all(
-            'a', href=lambda href: href and '/products/' in href)
-
-        # Extract href and src attributes
-        for link in product_links:
-            href = link.get('href')
-            img_src = link.find('img').get('src')
-            href_list.append(href)
-            src_list.append(img_src)
-
-    # Create a DataFrame
-    data = {'href': href_list, 'src': src_list}
-    df = pd.DataFrame(data)
-
-    # Save DataFrame to CSV
-    df.to_csv('dis_man.csv', index=False)
-
-    print("Data saved to dis_man.csv")
-
-
 def main():
     # Set up WebDriver
     driver = setup_driver()
